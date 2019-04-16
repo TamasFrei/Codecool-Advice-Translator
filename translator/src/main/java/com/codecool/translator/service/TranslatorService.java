@@ -17,8 +17,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
-@Service
 @Slf4j
+@Service
 public class TranslatorService {
 
     @Value("${translator.url}")
@@ -39,6 +39,12 @@ public class TranslatorService {
         log.info("Response from translating API: " + response.getBody());
         log.info("Status of response from translating API: " + response.getStatusCodeValue());
 
+        return provideTranslation(response);
+    }
+
+    public String provideTranslation(ResponseEntity<String> response) {
+        System.out.println("method");
+        System.out.println(response);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = null;
         try {
@@ -49,7 +55,7 @@ public class TranslatorService {
 
         JsonNode translation = root.path("contents").path("translated");
 
-        log.info("TRanslated text from translating API: " + translation.asText());
+        log.info("Translated text from translating API: " + translation.asText());
 
         return translation.asText();
     }
