@@ -28,6 +28,7 @@ public class TranslatorService {
     private RestTemplate restTemplate;
 
     public String getTranslatedText(String text, String language) {
+        log.info("Text to api: " + text);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 

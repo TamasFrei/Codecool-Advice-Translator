@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -7,39 +7,46 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="../static/translator.css" />
     <title>Advice Translator</title>
 
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col text-center">
             <h1>Welcome to Useless Advice Translator</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <h2>Advice</h2>
+        <div class="col text-center">
+            <h2  th:text="${advice}"></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <form id="postlang" method="post" action="#" th:action="@{/translator}" th:object="${language}" >
+
+                <select name="language" id="selectlang">
+                    <option disabled>Please select...</option>
+                    <option th:value="'yoda'" th:text="Yoda"></option>
+                    <option th:value="'pirate'" th:text="Pirate"></option>
+                    <option th:value="'dothraki'" th:text="Dothraki"></option>
+                    <option th:value="'valyrian'" th:text="Valyrian"></option>
+                    <option th:value="'sith'" th:text="Sith"></option>
+                    <option th:value="'klingon'" th:text="Klingon"></option>
+                </select>
+                <button type="submit" >Submit</button>
+            </form>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <div class="dropdown">
-                <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Yoda</a>
-                    <a class="dropdown-item" href="#">Pirate</a>
-                    <a class="dropdown-item" href="#">Dothraki</a>
-                    <a class="dropdown-item" href="#">Valyrian</a>
-                    <a class="dropdown-item" href="#">Sith</a>
-                    <a class="dropdown-item" href="#">Klingon</a>
-                </div>
-            </div>
+            <img src="${image}">
         </div>
     </div>
+
 </div>
 
 

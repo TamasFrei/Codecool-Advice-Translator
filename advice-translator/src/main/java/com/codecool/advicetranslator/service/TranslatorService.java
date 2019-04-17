@@ -1,5 +1,6 @@
 package com.codecool.advicetranslator.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -11,6 +12,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@Slf4j
 public class TranslatorService {
 
     @Autowired
@@ -26,6 +28,7 @@ public class TranslatorService {
         map.add("text", advice);
         map.add("language", language);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, httpHeaders);
+        log.info("Response: " + restTemplate.postForEntity(translatorURL, request, String.class));
         return restTemplate.postForEntity(translatorURL, request, String.class).getBody();
     }
 
