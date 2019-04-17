@@ -48,16 +48,16 @@ public class ApiGatewayApplication {
             List<SwaggerResource> swaggerResources = new ArrayList<>();
             zuulProperties.getRoutes().values().stream()
                     .forEach(route -> swaggerResources
-                            .add(createResource(route.getServiceId(), route.getServiceId())));
+                            .add(createResource(route.getServiceId(), route.getServiceId(), "2.0")));
             return swaggerResources;
         };
     }
 
-    private SwaggerResource createResource(String name, String location) {
+    private SwaggerResource createResource(String name, String location, String version) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
         swaggerResource.setLocation("/" + location + "/v2/api-docs");
-        swaggerResource.setSwaggerVersion("2.0");
+        swaggerResource.setSwaggerVersion(version);
         return swaggerResource;
     }
 
