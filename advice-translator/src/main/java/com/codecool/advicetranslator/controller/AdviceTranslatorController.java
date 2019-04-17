@@ -45,6 +45,7 @@ public class AdviceTranslatorController {
     public String getAdvice(Model model) {
         String adviceText = adviceService.getAdvice();
         model.addAttribute("advice", adviceText);
+        model.addAttribute("image", "http://localhost:8861/img/baseImage.jpg");
         this.advice = adviceText;
         log.info("=== " + this.advice + " ===");
         return "translator";
