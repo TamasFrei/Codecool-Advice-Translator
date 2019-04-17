@@ -46,6 +46,7 @@ public class AdviceTranslatorController {
         String adviceText = adviceService.getAdvice();
         model.addAttribute("advice", adviceText);
         this.advice = adviceText;
+        log.info("=== " + this.advice + " ===");
         return "translator";
     }
 
