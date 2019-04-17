@@ -3,6 +3,7 @@ package com.codecool.advicetranslator.controller;
 import com.codecool.advicetranslator.model.Advice;
 import com.codecool.advicetranslator.model.Language;
 import com.codecool.advicetranslator.service.AdviceService;
+import com.codecool.advicetranslator.service.ImageServiceCaller;
 import com.codecool.advicetranslator.service.TranslatorService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Pointcut;
@@ -21,6 +22,9 @@ public class AdviceTranslatorController {
 
     @Autowired
     private TranslatorService translatorService;
+
+    @Autowired
+    private ImageServiceCaller imageServiceCaller;
 
     @ModelAttribute(value="language")
     public Language getLanguage() {
@@ -51,6 +55,9 @@ public class AdviceTranslatorController {
         String languageToTranslate =  language.getLanguage();
         String translatedAdvice = translatorService.postTranslatedAdvice(this.advice, languageToTranslate);
         model.addAttribute("advice", translatedAdvice);
+
+        String image = imageServiceCaller.getImageForLanguage(language.getLanguage());
+        model.addAttribute("image", image);
         return "translator";
     }
 
