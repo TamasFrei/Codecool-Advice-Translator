@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -29,7 +29,6 @@
             <form id="postlang" method="post" action="#" th:action="@{/translator}" th:object="${language}" >
 
                 <select name="language" id="selectlang">
-                    <option th:text="Please select..." disabled selected></option>
                     <option th:value="'yoda'" th:text="Yoda"></option>
                     <option th:value="'pirate'" th:text="Pirate"></option>
                     <option th:value="'dothraki'" th:text="Dothraki"></option>
