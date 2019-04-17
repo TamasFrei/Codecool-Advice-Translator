@@ -12,24 +12,26 @@
 
 </head>
 <body th:style="'background-image:url(' + @{${image}} + '); background-size: cover;'">
-<div class="container">
+<div class="container mx-auto">
     <div class="row">
-        <div class="col text-center">
+        <div class="col text-center mt-5">
             <h1>Welcome to Useless Advice Translator</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col text-center">
+        <div class="col text-center mt-5">
             <h2  th:text="${advice}"></h2>
         </div>
     </div>
 
     <div class="row">
-        <div class="col text-center">
+        <div class="col text-center mt-5">
             <form id="postlang" method="post" action="#" th:action="@{/translator}" th:object="${language}" >
 
                 <select name="language" id="selectlang">
-                    <option disabled>Please select...</option>
+                    <option value="" th:disabled="disabled" th:selected="selected">
+                        Select a language...
+                    </option>
                     <option th:value="'yoda'" th:text="Yoda"></option>
                     <option th:value="'pirate'" th:text="Pirate"></option>
                     <option th:value="'dothraki'" th:text="Dothraki"></option>
@@ -37,14 +39,12 @@
                     <option th:value="'sith'" th:text="Sith"></option>
                     <option th:value="'klingon'" th:text="Klingon"></option>
                 </select>
-                <button type="submit" >Submit</button>
+                <button type="submit" class="btn btn-danger">Submit</button>
             </form>
         </div>
     </div>
 
-
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
