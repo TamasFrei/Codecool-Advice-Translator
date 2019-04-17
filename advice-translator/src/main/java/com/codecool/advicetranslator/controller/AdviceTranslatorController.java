@@ -45,6 +45,7 @@ public class AdviceTranslatorController {
     public String getAdvice(Model model) {
         String adviceText = adviceService.getAdvice();
         model.addAttribute("advice", adviceText);
+        model.addAttribute("image", "http://localhost:8861/img/baseImage.jpg");
         this.advice = adviceText;
         return "translator";
     }
@@ -53,8 +54,8 @@ public class AdviceTranslatorController {
     public String postTranslatedAdvice(Model model, @ModelAttribute("language") Language language) {
         log.info("ADVICE:" + this.advice);
         String languageToTranslate =  language.getLanguage();
-        //String translatedAdvice = translatorService.postTranslatedAdvice(this.advice, languageToTranslate);
-        //model.addAttribute("advice", translatedAdvice);
+        String translatedAdvice = translatorService.postTranslatedAdvice(this.advice, languageToTranslate);
+        model.addAttribute("advice", translatedAdvice);
 
         String image = imageServiceCaller.getImageForLanguage(languageToTranslate);
         model.addAttribute("image", "http://localhost:8861/" + image);

@@ -8,27 +8,28 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/translator.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title>Advice Translator</title>
 
 </head>
-<body th:style="'background-image:url(' + @{${image}} + '); background-size: cover;'">
-<div class="container mx-auto">
+<body th:style="'background-image:url(' + @{${image}} + '); background-size: cover; color: cornsilk; font-family: Lato, sans-serif;'">
+<div class="container">
+    <div class="mt-5" th:style="'background-color: rgba(0,128,128,0.6); color: cornsilk;'">
     <div class="row">
-        <div class="col text-center mt-5">
+        <div class="col text-center pt-3">
             <h1>Welcome to Useless Advice Translator</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col text-center mt-5">
+        <div class="col text-center mt-2 p-3" >
             <h2  th:text="${advice}"></h2>
         </div>
     </div>
-
     <div class="row">
-        <div class="col text-center mt-5">
+        <div class="col text-right mb-3 mr-0 pr-0">
             <form id="postlang" method="post" action="#" th:action="@{/translator}" th:object="${language}" >
 
-                <select name="language" id="selectlang">
+                <select name="language" id="selectlang" th:style="'border-radius: 5px; height: 38px; background-color: cornsilk; color: dimgrey'">
                     <option value="" th:disabled="disabled" th:selected="selected">
                         Select a language...
                     </option>
@@ -39,11 +40,18 @@
                     <option th:value="'sith'" th:text="Sith"></option>
                     <option th:value="'klingon'" th:text="Klingon"></option>
                 </select>
-                <button type="submit" class="btn btn-danger">Submit</button>
+            </form>
+        </div>
+        <div class="col text-left mb-3 ml-0 pl-0">
+            <button type="submit" class="btn btn-danger" form="postlang">Submit</button>
+        </div>
+        <div class="col text-left mb-3">
+            <form method="get" action="#" th:action="@{/}">
+                <button type="submit" class="btn btn-warning ml-4">Get Advice</button>
             </form>
         </div>
     </div>
-
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
