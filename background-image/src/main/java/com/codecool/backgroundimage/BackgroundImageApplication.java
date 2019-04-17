@@ -31,38 +31,38 @@ public class BackgroundImageApplication {
     public CommandLineRunner init(){
         return args -> {
             Image imageYoda = Image.builder()
-                    .name("static/img/yoda.jpeg")
+                    .name("img/yoda.jpeg")
                     .language(Language.YODA)
                     .build();
             imageRepository.save(imageYoda);
 
 
             Image imageDothraki = Image.builder()
-                    .name("static/img/dothraki.jpg")
+                    .name("img/dothraki.jpg")
                     .language(Language.DOTHRAKI)
                     .build();
             imageRepository.save(imageDothraki);
 
             Image imageKlingon = Image.builder()
-                    .name("static/img/klingon.jpeg")
+                    .name("img/klingon.jpeg")
                     .language(Language.KLINGON)
                     .build();
             imageRepository.save(imageKlingon);
 
             Image imagePirate = Image.builder()
-                    .name("static/img/pirate.jpg")
+                    .name("img/pirate.jpg")
                     .language(Language.PIRATE)
                     .build();
             imageRepository.save(imagePirate);
 
             Image imageSith = Image.builder()
-                    .name("static/img/sith.jpg")
+                    .name("img/sith.jpg")
                     .language(Language.SITH)
                     .build();
             imageRepository.save(imageSith);
 
             Image imageValyrian = Image.builder()
-                    .name("static/img/valyrian.jpg")
+                    .name("img/valyrian.jpg")
                     .language(Language.VALYRIAN)
                     .build();
             imageRepository.save(imageValyrian);

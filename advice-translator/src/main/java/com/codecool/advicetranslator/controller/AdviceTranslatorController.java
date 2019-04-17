@@ -53,13 +53,14 @@ public class AdviceTranslatorController {
     public String postTranslatedAdvice(Model model, @ModelAttribute("language") Language language) {
         log.info("ADVICE:" + this.advice);
         String languageToTranslate =  language.getLanguage();
-        String translatedAdvice = translatorService.postTranslatedAdvice(this.advice, languageToTranslate);
-        model.addAttribute("advice", translatedAdvice);
+        //String translatedAdvice = translatorService.postTranslatedAdvice(this.advice, languageToTranslate);
+        //model.addAttribute("advice", translatedAdvice);
 
-        String image = imageServiceCaller.getImageForLanguage(language.getLanguage());
-        model.addAttribute("image", image);
+        String image = imageServiceCaller.getImageForLanguage(languageToTranslate);
+        model.addAttribute("image", "http://localhost:8861/" + image);
         return "translator";
     }
+
 
     @GetMapping("/advice-translator")
     public String getAdviceTranslator() {
