@@ -11,7 +11,7 @@
     <title>Advice Translator</title>
 
 </head>
-<body th:style="'background-image:url(' + @{${image}} + ');'">
+<body th:style="'background-image:url(' + @{${image}} + '); background-size: cover;'">
 <div class="container">
     <div class="row">
         <div class="col text-center">
@@ -29,6 +29,7 @@
             <form id="postlang" method="post" action="#" th:action="@{/translator}" th:object="${language}" >
 
                 <select name="language" id="selectlang">
+                    <option disabled>Please select...</option>
                     <option th:value="'yoda'" th:text="Yoda"></option>
                     <option th:value="'pirate'" th:text="Pirate"></option>
                     <option th:value="'dothraki'" th:text="Dothraki"></option>
