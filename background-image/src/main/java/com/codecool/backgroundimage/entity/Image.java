@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+
 @Data
 @Entity
 @Builder
@@ -18,10 +19,8 @@ public class Image {
     @GeneratedValue
     private Long id;
 
-    @Column
     private String name;
 
-    @Column
     @Enumerated(value = EnumType.STRING)
     private Language language;
 

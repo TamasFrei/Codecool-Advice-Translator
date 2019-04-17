@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class BackgroundImageApplication {
 
     @Autowired
-    ImageRepository imageRepository;
+    public ImageRepository imageRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(BackgroundImageApplication.class, args);
@@ -34,7 +34,7 @@ public class BackgroundImageApplication {
                     .name("test")
                     .language(Language.YODA)
                     .build();
-            imageRepository.save(imageYoda);
+            imageRepository.saveAndFlush(imageYoda);
         };
     }
 
