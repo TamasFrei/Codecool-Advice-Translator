@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
-@RequestMapping("/translator")
 public class TranslatorController {
 
     @Autowired
@@ -19,6 +18,8 @@ public class TranslatorController {
 
     @PostMapping("/translator")
     public String translateText(@RequestParam("text") String textToTranslate, @RequestParam("language") String languageToTranslate) {
+        log.info("Text to service" + textToTranslate);
+
         String translatedText = translatorService.getTranslatedText(textToTranslate, languageToTranslate);
         log.info("Translated text from translator controller:" + translatedText);
         return translatedText;
